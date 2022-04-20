@@ -1,37 +1,43 @@
 import React from 'react'
 import { useState } from 'react';
 import apiFacade from "../apiFacade.js";
-import "../styles/Cat.css";
-const Cat = () => {
-    const [cat, setCat] = useState("");
+import "../styles/Animal.css";
+const Animal = () => {
+    const [animal, setAnimal] = useState("");
 
 
     function getCat() {
-        apiFacade.fetchCat().then(data => setCat(data));
+        apiFacade.fetchCat().then(data => setAnimal(data));
+    }
+
+    function getDog() {
+        apiFacade.fetchDog().then(data => setAnimal(data));
     }
 
     return (
         <main>
             <div className='container'>
                 <div className='row'>
-                    {cat != "" ?
+                    {animal != "" ?
                         <>
                             <div className='column'>
-                                <img className='cat-img' src={cat.url} />
+                                <img className='animal-img' src={animal.url} />
                             </div>
                             <div className='column'>
-                                <div className='cat-fact-section'>
+                                <div className='animal-fact-section'>
                                     <h2>Did you know..?</h2>
-                                    <h3>{cat.fact}</h3>
-                                    <button onClick={getCat}>Generate</button>
+                                    <h3>{animal.fact}</h3>
+                                    <button onClick={getCat}>Generate Cat</button>
+                                    <button onClick={getDog}>Generate Dog</button>
                                 </div>
                             </div>
                         </> : <>
                             <div className='column'>
                                 <div className='section'>
-                                    <h2 className='center'>Get cat facts here!</h2>
+                                    <h2 className='center'>Get pet facts here!</h2>
                                     <h3 className='center'>Click here to get a random cat fact!</h3>
-                                    <button onClick={getCat}>Generate</button>
+                                    <button onClick={getCat}>Generate Cat</button>
+                                    <button onClick={getDog}>Generate Dog</button>
                                 </div>
                             </div>
                         </>
@@ -42,4 +48,4 @@ const Cat = () => {
     )
 }
 
-export default Cat
+export default Animal

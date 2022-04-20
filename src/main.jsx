@@ -4,7 +4,7 @@ import App from "./App";
 import Home from "./components/Home";
 import NoMatch from "./components/NoMatch";
 import LoginPage from "./components/LoginPage";
-import Cat from "./components/Cat";
+import Animal from "./components/Animal";
 
 const rootElement = document.getElementById("root");
 render(
@@ -14,7 +14,7 @@ render(
         <Route path="/" element={<Home/>}>
         </Route>
         <Route path="login" element={<LoginPage/>} />
-        <Route path="cat" element={<Cat/>} />
+        <Route path="animal" element={<Animal/>} />
         <Route path="*" element={<NoMatch/>} />
     
       </Route>

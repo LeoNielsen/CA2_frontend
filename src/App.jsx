@@ -18,7 +18,7 @@ export default function App() {
       <header>
         <nav>
           <NavLink className="nav-link" to="/">Home</NavLink>
-          <NavLink className="nav-link" to="cat">Generate</NavLink>
+          <NavLink className="nav-link" to="animal">Generate</NavLink>
 
 
           {

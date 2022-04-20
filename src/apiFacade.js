@@ -40,6 +40,11 @@ function apiFacade() {
     return fetch(URL + "/api/cat/cat", options).then(handleHttpErrors);
   }
 
+  const fetchDog = () => {
+    const options = makeOptions("GET", true); //True add's the token
+    return fetch(URL + "/api/dog/dog", options).then(handleHttpErrors);
+  }
+
   const create = (username, password) => {
     const options = makeOptions("POST", true, { userName: username, userPass: password }); //True add's the token
     console.log(username + " " + password);
@@ -73,6 +78,7 @@ function apiFacade() {
     logout,
     fetchUserInfo,
     fetchCat,
+    fetchDog,
     create,
   }
 }
