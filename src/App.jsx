@@ -1,31 +1,31 @@
-import { Outlet, Link, NavLink } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./styles/App.css";
 import apiFacade from "./apiFacade.js";
+import Home from "./components/Home";
+import NoMatch from "./components/NoMatch";
+import LoginPage from "./components/LoginPage";
+import Animal from "./components/Animal";
+import Favorites from "./components/Favorites";
+import Header from "./components/Header"
+import { useState } from "react";
+
 export default function App() {
 
-  function logout() {
-    apiFacade.logout();
-  }
-
+  const [loggedIn, setLoggedIn] = useState(false);
 
   return (
     <div>
-      <header>
-        <nav>
-          <NavLink className="nav-link" to="/">Home</NavLink>
-          <NavLink className="nav-link" to="animal">Generate</NavLink>
-          {
-            apiFacade.loggedIn() && <NavLink className="nav-link" to="favorites">Favorites</NavLink>
-          }
-          {   
-              apiFacade.loggedIn() ?
-                <NavLink className="nav-button" to="/" onClick={logout}>Logout</NavLink>
-              :
-                <NavLink className="nav-button" to="login">Login</NavLink> 
-          }
-        </nav>
-      </header>
-      <Outlet />
-    </div>
+      <BrowserRouter>
+       <Header loggedIn={loggedIn} />
+       <Routes>
+        <Route path="/" element={<Home/>}/>
+         <Route path="login" element={<LoginPage loggedIn={loggedIn} setLoggedIn={setLoggedIn} />} />
+         <Route path="animal" element={<Animal/>} />
+         <Route path="favorites" element={<Favorites />} />
+         <Route path="*" element={<NoMatch/>} />  
+        </Routes>
+      </BrowserRouter>
+    </div>  
   );
+
 }

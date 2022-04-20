@@ -77,8 +77,7 @@ function LoggedIn() {
 
 }
 
-function LoginPage() {
-  const [loggedIn, setLoggedIn] = useState(false);
+function LoginPage( { loggedIn, setLoggedIn } ) {
   const [creatingUser, setCreatingUser] = useState(false);
 
   const logout = () => {
