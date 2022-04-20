@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import NoMatch from "./components/NoMatch";
 import LoginPage from "./components/LoginPage";
 import Animal from "./components/Animal";
+import Favorites from "./components/Favorites";
 
 const rootElement = document.getElementById("root");
 render(
@@ -15,6 +16,7 @@ render(
         </Route>
         <Route path="login" element={<LoginPage/>} />
         <Route path="animal" element={<Animal/>} />
+        <Route path="favorites" element={<Favorites />} />
         <Route path="*" element={<NoMatch/>} />
     
       </Route>

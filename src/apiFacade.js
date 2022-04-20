@@ -1,4 +1,5 @@
 import URL from "./settings";
+let loggedIn = false;
 
 function handleHttpErrors(res) {
   if (!res.ok) {
@@ -15,17 +16,21 @@ function apiFacade() {
   const getToken = () => {
     return localStorage.getItem('jwtToken')
   }
+
   const loggedIn = () => {
-    const loggedIn = getToken() != null;
-    return loggedIn;
+    console.log(getToken() != null);
+    console.log(getToken());
+    return getToken() != null;
   }
   const logout = () => {
+    loggedIn();
     localStorage.removeItem("jwtToken");
   }
 
 
   const login = (user, password) => {
     const options = makeOptions("POST", true, { username: user, password: password });
+    loggedIn();
     return fetch(URL + "/api/login", options)
       .then(handleHttpErrors)
       .then(res => { setToken(res.token) })
