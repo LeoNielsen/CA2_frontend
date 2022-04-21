@@ -1,5 +1,6 @@
 import React from 'react'
 import { Outlet, Link, NavLink } from "react-router-dom";
+import "../styles/Header.css"
 
 function logout() {
     apiFacade.logout();
@@ -7,9 +8,9 @@ function logout() {
 
 const Header = ( { loggedIn }) => {
   return (
-    <div>
-    <header>
-    <nav>
+    <div className='nav-header'>
+    <header >
+    <nav >
       <NavLink className="nav-link" to="/">Home</NavLink>
       <NavLink className="nav-link" to="animal">Generate</NavLink>
       {

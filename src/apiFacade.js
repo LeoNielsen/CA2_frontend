@@ -35,9 +35,16 @@ function apiFacade() {
       .then(handleHttpErrors)
       .then(res => { setToken(res.token) })
   }
-  const fetchUserInfo = () => {
+  const fetchUserInfo = async () => {
     const options = makeOptions("GET", true); //True add's the token
-    return fetch(URL + "/api/info/userinfo", options).then(handleHttpErrors);
+    const res = await fetch(URL + "/api/info/userinfo", options);
+    const data = await res.json()
+    return data;
+  }
+
+  const fetchFavorites = () => {
+    const options = makeOptions("GET", true);
+    return fetch(URL + "/api/info/favorites", options).then(handleHttpErrors);
   }
 
   const fetchCat = () => {
@@ -82,6 +89,7 @@ function apiFacade() {
     login,
     logout,
     fetchUserInfo,
+    fetchFavorites,
     fetchCat,
     fetchDog,
     create,

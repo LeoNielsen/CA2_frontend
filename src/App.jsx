@@ -1,6 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./styles/App.css";
-import apiFacade from "./apiFacade.js";
 import Home from "./components/Home";
 import NoMatch from "./components/NoMatch";
 import LoginPage from "./components/LoginPage";
