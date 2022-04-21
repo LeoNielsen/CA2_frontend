@@ -9,7 +9,6 @@
   .animal-img:hover {
     filter: grayscale(50%);
     scale: 105%;
-
   }
 
 

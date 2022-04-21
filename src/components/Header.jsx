@@ -13,9 +13,8 @@ const Header = ( { loggedIn }) => {
     <nav >
       <NavLink className="nav-link" to="/">Home</NavLink>
       <NavLink className="nav-link" to="animal">Generate</NavLink>
-      {
-      loggedIn && <NavLink className="nav-link" to="favorites">Favorites</NavLink>
-      }
+      <NavLink className="nav-link" to="favorites">Favorites</NavLink>
+      
       {   
       loggedIn ?
       <NavLink className="nav-button" to="/" onClick={logout}>Logout</NavLink>

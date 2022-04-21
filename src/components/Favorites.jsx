@@ -3,11 +3,12 @@ import { useState, useEffect } from 'react'
 import apiFacade from '../apiFacade'
 import "../styles/Favorites.css"
 import AnimalImage from './AnimalImage'
+import {Link} from "react-router-dom";
 
 
 
 
-const favorites = () => {
+const favorites = ( { loggedIn } ) => {
 
 const [userInfo, setUserInfo] = useState([])
 
@@ -18,30 +19,38 @@ const getFavorites = () => {
   })
 }
 
-
-// const getUserInfo = async () => {
-//   const getUserInfo = apiFacade.fetchUserInfo()
- 
-//   setUserInfo(getUserInfo);
-// }
-
 useEffect (() => {
   getFavorites()
 }, [])
 
+const onclick = (e) => {
 
+  const image = userInfo.filter((image) => image.id==e.currentTarget.id)
+  const newUserInfo = userInfo.filter((image) => image.id!=e.currentTarget.id)
+  setUserInfo(newUserInfo);
+  apiFacade.removeFavorites(image.at(0));
 
-
+}
  
   return (
+    <>
+    {loggedIn ? (
     <div className='card-list' >
       {
       userInfo.map((image) => {
-        return <AnimalImage url={image.url} />
+        return <AnimalImage id={image.id} url={image.url} onclick={onclick}/>
       })
       }
     
-    </div>
+    </div>) 
+    :
+    (<div className='container'>
+      <h2>you most be logged in to be able to see your favorites</h2>
+      <Link to="/login"> <button className="login-button">login</button></Link>
+    </div>)
+    }
+    </>
+    
   )
 }
 

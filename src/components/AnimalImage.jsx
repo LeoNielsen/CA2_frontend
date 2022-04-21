@@ -1,10 +1,10 @@
 import React from 'react'
 import "../styles/AnimalImage.css"
 
-const AnimalImage = ( { url } ) => {
+const AnimalImage = ( { id ,url, onclick } ) => {
   return (
     <div>
-        <img className='card-container' src={url} />
+        <img className='card-container' id={id} src={url} onClick={onclick}/>
     </div>
   )
 }

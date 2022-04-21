@@ -65,6 +65,14 @@ function apiFacade() {
       .then(res => res.json())
   }
 
+  const removeFavorites = (data) => {
+    const options = makeOptions("DELETE", true, data)
+    console.log(data);
+    return fetch(URL + "/api/info/removefavorite", options)
+      .then(handleHttpErrors)
+      .then(res => res.json())
+  }
+
   const create = (username, password) => {
     const options = makeOptions("POST", true, { userName: username, userPass: password }); //True add's the token
     console.log(username + " " + password);
@@ -101,6 +109,7 @@ function apiFacade() {
     fetchCat,
     fetchDog,
     addFavorites,
+    removeFavorites,
     create,
   }
 }

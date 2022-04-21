@@ -6,3 +6,16 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 20px;
 }
+
+.container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.login-button {
+  max-width: 25%;
+  margin-top: 10px;
+  background-color: rgb(47, 201, 47);
+  color: white;
+  margin-bottom: 10px;
+}

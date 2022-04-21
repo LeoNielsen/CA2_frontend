@@ -19,7 +19,7 @@ export default function App() {
         <Route path="/" element={<Home/>}/>
          <Route path="login" element={<LoginPage loggedIn={loggedIn} setLoggedIn={setLoggedIn} />} />
          <Route path="animal" element={<Animal/>} />
-         <Route path="favorites" element={<Favorites />} />
+         <Route path="favorites" element={<Favorites loggedIn={loggedIn} />} />
          <Route path="*" element={<NoMatch/>} />  
         </Routes>
       </BrowserRouter>

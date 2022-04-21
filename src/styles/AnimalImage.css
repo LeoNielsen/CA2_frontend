@@ -13,3 +13,7 @@
     width: 300px;
     height: 350px;
   }
+
+  .card-container:hover {
+    scale: 105%;
+  }
