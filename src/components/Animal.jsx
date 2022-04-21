@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import apiFacade from "../apiFacade.js";
 import "../styles/Animal.css";
+
 const Animal = () => {
     const [animal, setAnimal] = useState("");
 
@@ -33,7 +34,8 @@ const Animal = () => {
                     {animal != "" ?
                         <>
                             <div className='column'>
-                                <img className='animal-img' src={animal.url} onClick={onclick} />
+                                 <img className='animal-img' src={animal.url} onClick={onclick} />
+                                 {/* <div className='heart'></div> */}
                             </div>
                             <div className='column'>
                                 <div className='animal-fact-section'>
