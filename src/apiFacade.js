@@ -18,8 +18,6 @@ function apiFacade() {
   }
 
   const loggedIn = () => {
-    console.log(getToken() != null);
-    console.log(getToken());
     return getToken() != null;
   }
   const logout = () => {
@@ -47,6 +45,8 @@ function apiFacade() {
     return fetch(URL + "/api/info/favorites", options).then(handleHttpErrors);
   }
 
+  
+
   const fetchCat = () => {
     const options = makeOptions("GET", true); //True add's the token
     return fetch(URL + "/api/cat/cat", options).then(handleHttpErrors);
@@ -55,6 +55,14 @@ function apiFacade() {
   const fetchDog = () => {
     const options = makeOptions("GET", true); //True add's the token
     return fetch(URL + "/api/dog/dog", options).then(handleHttpErrors);
+  }
+
+  const addFavorites = (data) => {
+    const options = makeOptions("PUT", true, data)
+    console.log(data);
+    return fetch(URL + "/api/info/addfavorite", options)
+      .then(handleHttpErrors)
+      .then(res => res.json())
   }
 
   const create = (username, password) => {
@@ -92,6 +100,7 @@ function apiFacade() {
     fetchFavorites,
     fetchCat,
     fetchDog,
+    addFavorites,
     create,
   }
 }

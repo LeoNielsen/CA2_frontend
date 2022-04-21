@@ -7,11 +7,23 @@ const Animal = () => {
 
 
     function getCat() {
-        apiFacade.fetchCat().then(data => setAnimal(data));
+        apiFacade.fetchCat().then(data => {
+            console.log(data);
+            setAnimal(data)
+        });
+        
     }
 
     function getDog() {
         apiFacade.fetchDog().then(data => setAnimal(data));
+    }
+
+    function addFavorite() {
+        apiFacade.addFavorites(animal);
+    }
+
+    const onclick = (e) => {
+        addFavorite()
     }
 
     return (
@@ -21,7 +33,7 @@ const Animal = () => {
                     {animal != "" ?
                         <>
                             <div className='column'>
-                                <img className='animal-img' src={animal.url} />
+                                <img className='animal-img' src={animal.url} onClick={onclick} />
                             </div>
                             <div className='column'>
                                 <div className='animal-fact-section'>
